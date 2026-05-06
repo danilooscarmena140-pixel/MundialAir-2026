@@ -3,122 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MundialAir 2026 | Sistema de Reservas</title>
+    <title>MundialAir 2026 | Luxury Flight Experience</title>
+    <link href="https://googleapis.com" rel="stylesheet">
     <style>
-        :root { --mx: #006847; --us: #002868; --ca: #FF0000; --gold: #FFD700; --dark: #111; }
-        body { margin: 0; font-family: 'Segoe UI', Tahoma, sans-serif; background: #f0f0f0; }
-        
-        /* Navegación */
-        .navbar { background: #000; color: white; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 4px solid var(--gold); }
-        .logo { font-weight: 900; font-size: 1.5rem; }
+        :root {
+            --mex: #006847; --usa: #002868; --can: #FF0000;
+            --gold: #FFD700; --white: #ffffff; --dark: #0a0a0a;
+        }
+
+        * { box-sizing: border-box; }
+        body { 
+            margin: 0; font-family: 'Montserrat', sans-serif; 
+            background: #000; color: var(--white); overflow-x: hidden;
+        }
+
+        /* --- FONDO ANIMADO --- */
+        .bg-gradient {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(45deg, #000, #1a1a1a, #002868, #000);
+            background-size: 400% 400%; animation: gradientBG 15s ease infinite;
+            z-index: -1;
+        }
+        @keyframes gradientBG { 0% {background-position: 0% 50%;} 50% {background-position: 100% 50%;} 100% {background-position: 0% 50%;} }
+
+        /* --- NAVEGACIÓN --- */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 5%; background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px); border-bottom: 2px solid var(--gold);
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .logo { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; letter-spacing: 2px; }
         .logo span { color: var(--gold); }
 
-        /* Tarjetas de Vuelo */
-        .vuelos { padding: 40px 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-bottom: 8px solid; text-align: center; padding-bottom: 20px; }
-        .mex { border-color: var(--mx); } .usa { border-color: var(--us); } .can { border-color: var(--ca); }
-        .card-header { padding: 10px; color: white; font-weight: bold; background: #333; }
-        .mex .card-header { background: var(--mx); } .usa .card-header { background: var(--us); } .can .card-header { background: var(--ca); }
-        
-        .price { font-size: 2rem; font-weight: 900; margin: 15px 0; display: block; color: #000; }
-        .btn { background: #000; color: white; border: none; padding: 12px 25px; border-radius: 5px; font-weight: bold; cursor: pointer; width: 80%; }
-        .btn:hover { background: var(--gold); color: #000; }
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 60vh; display: flex; align-items: center; justify-content: center;
+            text-align: center; background: url('https://unsplash.com') center/cover;
+            position: relative; margin-bottom: 50px;
+        }
+        .hero-overlay {
+            position: absolute; inset: 0; background: rgba(0,0,0,0.6);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+        }
+        .hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: 6rem; margin: 0; line-height: 0.9; }
+        .hero p { font-weight: 300; letter-spacing: 5px; color: var(--gold); }
 
-        /* MODAL DE PAGO (VENTANA EMERGENTE) */
-        #modalReserva { 
-            display: none; /* Oculto por defecto */
-            position: fixed; 
-            top: 0; left: 0; 
-            width: 100%; height: 100%; 
-            background: rgba(0,0,0,0.85); 
-            z-index: 9999; 
-            justify-content: center; 
-            align-items: center; 
+        /* --- GRID DE VUELOS --- */
+        .grid-vuelos {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px; padding: 50px 5%; max-width: 1300px; margin: auto;
         }
-        .modal-content { 
-            background: white; 
-            padding: 30px; 
-            border-radius: 15px; 
-            max-width: 400px; 
-            width: 90%; 
-            color: black; 
-            text-align: center;
+
+        .card {
+            background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 25px;
+            overflow: hidden; transition: 0.5s ease; position: relative;
         }
-        .input-fld { width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
-        .pago-final { background: var(--gold); color: black; border: none; width: 100%; padding: 15px; font-weight: bold; border-radius: 5px; cursor: pointer; font-size: 1.1rem; }
+        .card:hover { transform: translateY(-15px); border-color: var(--gold); box-shadow: 0 0 30px rgba(255, 215, 0, 0.2); }
+
+        .card-img { width: 100%; height: 200px; object-fit: cover; }
+        
+        .card-content { padding: 25px; text-align: center; }
+        .card-content h3 { font-size: 1.5rem; margin: 0 0 10px; font-family: 'Bebas Neue', sans-serif; letter-spacing: 1px; }
+        
+        .price { font-size: 2.5rem; font-weight: 900; color: var(--gold); display: block; margin: 15px 0; }
+        
+        .promo-tag {
+            font-size: 0.8rem; font-weight: 700; padding: 8px; border-radius: 50px;
+            margin-bottom: 20px; display: inline-block;
+        }
+        .mex-tag { background: var(--mex); } .usa-tag { background: var(--usa); } .can-tag { background: var(--can); }
+
+        .btn-reserve {
+            width: 100%; padding: 15px; border: none; border-radius: 12px;
+            background: var(--white); color: var(--dark); font-weight: 900;
+            cursor: pointer; transition: 0.3s; font-size: 1rem;
+        }
+        .btn-reserve:hover { background: var(--gold); transform: scale(1.05); }
+
+        /* --- MODAL DE PAGO --- */
+        #paymentModal {
+            display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95);
+            z-index: 2000; justify-content: center; align-items: center; padding: 20px;
+        }
+        .modal-body {
+            background: #1a1a1a; padding: 40px; border-radius: 30px;
+            max-width: 450px; width: 100%; border: 1px solid var(--gold); text-align: center;
+        }
+        .input-group {
+            width: 100%; padding: 15px; margin-bottom: 15px; background: #333;
+            border: 1px solid #444; border-radius: 10px; color: white; font-size: 1rem;
+        }
+        .pago-final {
+            width: 100%; padding: 18px; background: var(--gold); border: none;
+            border-radius: 12px; font-weight: 900; cursor: pointer; font-size: 1.2rem;
+        }
+
+        footer { text-align: center; padding: 50px; color: #555; font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="logo">⚽ MUNDIAL<span>AIR</span>2026</div>
-        <div style="background:var(--gold); color:black; padding:5px 10px; border-radius:5px; font-weight:bold;">OPERACIÓN 60 DÍAS</div>
+    <div class="bg-gradient"></div>
+
+    <nav>
+        <div class="logo">⚽ MUNDIAL<span>AIR</span></div>
+        <div style="text-align: right;">
+            <div style="font-size: 0.7rem; color: var(--gold);">CIERRE OPERATIVO</div>
+            <div style="font-weight: 900;">44 DÍAS RESTANTES</div>
+        </div>
     </nav>
 
-    <main class="vuelos">
+    <header class="hero">
+        <div class="hero-overlay">
+            <p>BIENVENIDO A BORDO</p>
+            <h1>CONECTANDO <span style="color:var(--gold)">NACIONES</span></h1>
+        </div>
+    </header>
+
+    <main class="grid-vuelos">
         <!-- MÉXICO -->
-        <div class="card mex">
-            <div class="card-header">SEDE MÉXICO</div>
-            <h3>CDMX ➔ MONTERREY</h3>
-            <span class="price">$490 USD</span>
-            <button class="btn" onclick="abrirPago('CDMX ➔ MONTERREY', '$490 USD')">RESERVAR AHORA</button>
+        <div class="card">
+            <img src="https://unsplash.com" class="card-img" alt="Avión México">
+            <div class="card-content">
+                <div class="promo-tag mex-tag">🇲🇽 PROMO VICTORIA: -20%</div>
+                <h3>CDMX ➔ MONTERREY</h3>
+                <span class="price">$490 USD</span>
+                <button class="btn-reserve" onclick="abrirVenta('MEXICO CITY ➔ MTY', '$490 USD')">RESERVAR AHORA</button>
+            </div>
         </div>
 
         <!-- USA -->
-        <div class="card usa">
-            <div class="card-header">SEDE USA</div>
-            <h3>MIAMI ➔ ATLANTA</h3>
-            <span class="price">$610 USD</span>
-            <button class="btn" onclick="abrirPago('MIAMI ➔ ATLANTA', '$610 USD')">RESERVAR AHORA</button>
+        <div class="card">
+            <img src="https://unsplash.com" class="card-img" alt="Avión USA">
+            <div class="card-content">
+                <div class="promo-tag usa-tag">🇺🇸 GOAL PASS: -15% POR GOL</div>
+                <h3>MIAMI ➔ ATLANTA</h3>
+                <span class="price">$610 USD</span>
+                <button class="btn-reserve" onclick="abrirVenta('MIAMI ➔ ATLANTA', '$610 USD')">RESERVAR AHORA</button>
+            </div>
         </div>
 
         <!-- CANADÁ -->
-        <div class="card can">
-            <div class="card-header">SEDE CANADÁ</div>
-            <h3>TORONTO ➔ VANCOUVER</h3>
-            <span class="price">$799 USD</span>
-            <button class="btn" onclick="abrirPago('TORONTO ➔ VANCOUVER', '$799 USD')">RESERVAR AHORA</button>
+        <div class="card">
+            <img src="https://unsplash.com" class="card-img" alt="Avión Canadá">
+            <div class="card-content">
+                <div class="promo-tag can-tag">🇨🇦 SQUAD PACK: FAMILIA 4X3</div>
+                <h3>TORONTO ➔ VANCOUVER</h3>
+                <span class="price">$799 USD</span>
+                <button class="btn-reserve" onclick="abrirVenta('TORONTO ➔ VANCOUVER', '$799 USD')">RESERVAR AHORA</button>
+            </div>
         </div>
     </main>
 
-    <!-- VENTANA DE PAGO -->
-    <div id="modalReserva">
-        <div class="modal-content">
-            <h2 style="color:var(--us)">Finalizar Compra ✈️</h2>
-            <p id="infoVuelo" style="font-weight:bold; font-size:1.1rem; margin-bottom:20px;"></p>
+    <!-- VENTANA DE PAGO PROFESIONAL -->
+    <div id="paymentModal">
+        <div class="modal-body">
+            <h2 style="font-family:'Bebas Neue'; font-size: 2.5rem; color: var(--gold); margin-bottom: 5px;">PASARELA DE PAGO</h2>
+            <p id="vueloInfo" style="margin-bottom: 30px; font-weight: 300;"></p>
             
-            <form onsubmit="confirmarPago(); return false;">
-                <input type="text" class="input-fld" placeholder="Nombre completo" required>
-                <input type="email" class="input-fld" placeholder="Correo electrónico" required>
-                
-                <div style="text-align:left; background:#f9f9f9; padding:10px; border-radius:5px; margin-bottom:20px; font-size:0.9rem;">
-                    <strong>Método de pago:</strong><br>
-                    <input type="radio" name="m" checked> Tarjeta VISA/MasterCard <br>
-                    <input type="radio" name="m"> PayPal
+            <form onsubmit="procesar(); return false;">
+                <input type="text" class="input-group" placeholder="Nombre en la Tarjeta" required>
+                <input type="text" class="input-group" placeholder="Número de Tarjeta (Simulado)" required>
+                <div style="display: flex; gap: 10px;">
+                    <input type="text" class="input-group" placeholder="MM/YY" required>
+                    <input type="text" class="input-group" placeholder="CVV" required>
                 </div>
-
-                <button type="submit" class="pago-final">CONFIRMAR PAGO</button>
-                <button type="button" onclick="cerrarPago()" style="background:none; border:none; color:red; margin-top:15px; cursor:pointer; font-weight:bold;">CANCELAR</button>
+                <button type="submit" class="pago-final">PAGAR Y GENERAR TICKET</button>
+                <button type="button" onclick="cerrar()" style="background:none; border:none; color: #888; margin-top: 20px; cursor: pointer;">Volver atrás</button>
             </form>
         </div>
     </div>
 
+    <footer>
+        <p>MUNDIALAIR 2026 | MODELO ESTRATÉGICO DE 60 DÍAS | CERO EMISIONES DURANTE EL TORNEO</p>
+    </footer>
+
     <script>
-        // Función para abrir la ventana
-        function abrirPago(ruta, precio) {
-            document.getElementById('infoVuelo').innerText = ruta + " | " + precio;
-            document.getElementById('modalReserva').style.display = 'flex';
+        function abrirVenta(ruta, costo) {
+            document.getElementById('vueloInfo').innerText = ruta + " | " + costo;
+            document.getElementById('paymentModal').style.display = 'flex';
         }
 
-        // Función para cerrar la ventana
-        function cerrarPago() {
-            document.getElementById('modalReserva').style.display = 'none';
+        function cerrar() {
+            document.getElementById('paymentModal').style.display = 'none';
         }
 
-        // Función al pagar
-        function confirmarPago() {
-            alert("✅ ¡Pago Exitoso! Tus boletos para el Mundial han sido reservados.");
-            cerrarPago();
+        function procesar() {
+            alert("✈️ ¡EXCELENTE ELECCIÓN!\nSu pago ha sido procesado por la Red MundialAir.\nSus boletos han sido enviados a su correo electrónico.");
+            cerrar();
         }
     </script>
 
