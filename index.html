@@ -3,112 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MundialAir 2026 | Oficial</title>
+    <title>MundialAir 2026 | Sistema de Reservas</title>
     <style>
-        /* TODO EL DISEÑO ESTÁ AQUÍ DENTRO */
         :root { --mx: #006847; --us: #002868; --ca: #FF0000; --gold: #FFD700; --dark: #111; }
-        body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #f0f0f0; color: var(--dark); }
+        body { margin: 0; font-family: 'Segoe UI', Tahoma, sans-serif; background: #f0f0f0; }
         
+        /* Navegación */
         .navbar { background: #000; color: white; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 4px solid var(--gold); }
         .logo { font-weight: 900; font-size: 1.5rem; }
         .logo span { color: var(--gold); }
-        .badge { background: var(--gold); color: #000; padding: 5px 10px; border-radius: 5px; font-weight: bold; font-size: 0.8rem; }
 
-        .hero { height: 50vh; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://unsplash.com'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; color: white; text-align: center; }
-        .hero h1 { font-size: 3rem; margin: 0; }
-        .txt-gradient { background: linear-gradient(to right, var(--mx), var(--gold), var(--ca)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 900; }
-
+        /* Tarjetas de Vuelo */
         .vuelos { padding: 40px 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
         .card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-bottom: 8px solid; text-align: center; padding-bottom: 20px; }
         .mex { border-color: var(--mx); } .usa { border-color: var(--us); } .can { border-color: var(--ca); }
-        .card-header { padding: 10px; color: white; font-weight: bold; }
+        .card-header { padding: 10px; color: white; font-weight: bold; background: #333; }
         .mex .card-header { background: var(--mx); } .usa .card-header { background: var(--us); } .can .card-header { background: var(--ca); }
         
-        .price { font-size: 2rem; font-weight: 900; margin: 15px 0; display: block; }
-        .promo { background: #e8f5e9; color: #2e7d32; padding: 8px; margin: 10px; border-radius: 5px; font-size: 0.8rem; font-weight: bold; }
+        .price { font-size: 2rem; font-weight: 900; margin: 15px 0; display: block; color: #000; }
         .btn { background: #000; color: white; border: none; padding: 12px 25px; border-radius: 5px; font-weight: bold; cursor: pointer; width: 80%; }
-        
-        .estrategia { background: #111; color: white; padding: 50px 5%; text-align: center; }
-        .banner { background: linear-gradient(to right, var(--mx), var(--us)); padding: 20px; border-radius: 10px; margin-top: 20px; }
+        .btn:hover { background: var(--gold); color: #000; }
+
+        /* MODAL DE PAGO (VENTANA EMERGENTE) */
+        #modalReserva { 
+            display: none; /* Oculto por defecto */
+            position: fixed; 
+            top: 0; left: 0; 
+            width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.85); 
+            z-index: 9999; 
+            justify-content: center; 
+            align-items: center; 
+        }
+        .modal-content { 
+            background: white; 
+            padding: 30px; 
+            border-radius: 15px; 
+            max-width: 400px; 
+            width: 90%; 
+            color: black; 
+            text-align: center;
+        }
+        .input-fld { width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+        .pago-final { background: var(--gold); color: black; border: none; width: 100%; padding: 15px; font-weight: bold; border-radius: 5px; cursor: pointer; font-size: 1.1rem; }
     </style>
 </head>
 <body>
 
     <nav class="navbar">
         <div class="logo">⚽ MUNDIAL<span>AIR</span>2026</div>
-        <div class="badge">CIERRE: 44 DÍAS</div>
+        <div style="background:var(--gold); color:black; padding:5px 10px; border-radius:5px; font-weight:bold;">OPERACIÓN 60 DÍAS</div>
     </nav>
 
-    <header class="hero">
-        <div>
-            <h1>EL CIELO SE PINTA DE <span class="txt-gradient">FÚTBOL</span></h1>
-            <p>Aerolínea Oficial del Mundial 2026</p>
-        </div>
-    </header>
-
     <main class="vuelos">
+        <!-- MÉXICO -->
         <div class="card mex">
             <div class="card-header">SEDE MÉXICO</div>
-            <h3>CDMX ➔ MTY</h3>
+            <h3>CDMX ➔ MONTERREY</h3>
             <span class="price">$490 USD</span>
-            <div class="promo">🏆 TRI PROMO: -20% POR VICTORIA</div>
-            <button class="btn">RESERVAR</button>
+            <button class="btn" onclick="abrirPago('CDMX ➔ MONTERREY', '$490 USD')">RESERVAR AHORA</button>
         </div>
 
+        <!-- USA -->
         <div class="card usa">
             <div class="card-header">SEDE USA</div>
             <h3>MIAMI ➔ ATLANTA</h3>
             <span class="price">$610 USD</span>
-            <div class="promo">⭐ GOAL PROMO: -15% POR GOL</div>
-            <button class="btn">RESERVAR</button>
+            <button class="btn" onclick="abrirPago('MIAMI ➔ ATLANTA', '$610 USD')">RESERVAR AHORA</button>
         </div>
 
+        <!-- CANADÁ -->
         <div class="card can">
             <div class="card-header">SEDE CANADÁ</div>
-            <h3>TORONTO ➔ VAN</h3>
+            <h3>TORONTO ➔ VANCOUVER</h3>
             <span class="price">$799 USD</span>
-            <div class="promo">🍁 MAPLE: FAMILIAR 4X3</div>
-            <button class="btn">RESERVAR</button>
+            <button class="btn" onclick="abrirPago('TORONTO ➔ VANCOUVER', '$799 USD')">RESERVAR AHORA</button>
         </div>
     </main>
 
-    <section class="estrategia">
-        <h2>PLAN ESTRATÉGICO 60 DÍAS</h2>
-        <div class="banner">
-            <h3>PROMO GRUPAL: 25% OFF</h3>
-            <p>Optimización de carga para vuelos de alta demanda.</p>
-        </div><!-- Formulario de Reserva (Oculto por defecto) -->
-<div id="modalReserva" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:2000; justify-content:center; align-items:center;">
-    <div style="background:white; padding:30px; border-radius:15px; max-width:400px; width:90%; color:black;">
-        <h2 style="margin-top:0;">Finalizar Reserva ✈️</h2>
-        <p id="detallesVuelo" style="font-weight:bold; color:var(--mx);"></p>
-        <form onsubmit="alert('¡Reserva Confirmada! Se ha enviado un código de pago a tu correo.'); return false;">
-            <input type="text" placeholder="Nombre completo" required style="width:100%; padding:10px; margin-bottom:10px; border:1px solid #ccc; border-radius:5px;">
-            <input type="email" placeholder="Correo electrónico" required style="width:100%; padding:10px; margin-bottom:10px; border:1px solid #ccc; border-radius:5px;">
-            <div style="background:#f9f9f9; padding:10px; border-radius:5px; margin-bottom:15px;">
-                <label>Método de Pago:</label><br>
-                <input type="radio" name="pago" checked> Tarjeta de Crédito <br>
-                <input type="radio" name="pago"> PayPal
-            </div>
-            <button type="submit" style="background:black; color:white; border:none; width:100%; padding:15px; font-weight:bold; border-radius:5px; cursor:pointer;">PAGAR AHORA</button>
-            <button type="button" onclick="document.getElementById('modalReserva').style.display='none'" style="background:none; border:none; color:red; width:100%; margin-top:10px; cursor:pointer;">Cancelar</button>
-        </form>
+    <!-- VENTANA DE PAGO -->
+    <div id="modalReserva">
+        <div class="modal-content">
+            <h2 style="color:var(--us)">Finalizar Compra ✈️</h2>
+            <p id="infoVuelo" style="font-weight:bold; font-size:1.1rem; margin-bottom:20px;"></p>
+            
+            <form onsubmit="confirmarPago(); return false;">
+                <input type="text" class="input-fld" placeholder="Nombre completo" required>
+                <input type="email" class="input-fld" placeholder="Correo electrónico" required>
+                
+                <div style="text-align:left; background:#f9f9f9; padding:10px; border-radius:5px; margin-bottom:20px; font-size:0.9rem;">
+                    <strong>Método de pago:</strong><br>
+                    <input type="radio" name="m" checked> Tarjeta VISA/MasterCard <br>
+                    <input type="radio" name="m"> PayPal
+                </div>
+
+                <button type="submit" class="pago-final">CONFIRMAR PAGO</button>
+                <button type="button" onclick="cerrarPago()" style="background:none; border:none; color:red; margin-top:15px; cursor:pointer; font-weight:bold;">CANCELAR</button>
+            </form>
+        </div>
     </div>
-</div>
 
-<script>
-    // Lógica para que los botones funcionen
-    document.querySelectorAll('.btn').forEach(boton => {
-        boton.addEventListener('click', function() {
-            const destino = this.parentElement.querySelector('h3').innerText;
-            const precio = this.parentElement.querySelector('.price').innerText;
-            document.getElementById('detallesVuelo').innerText = `Vuelo: ${destino} - Costo: ${precio}`;
+    <script>
+        // Función para abrir la ventana
+        function abrirPago(ruta, precio) {
+            document.getElementById('infoVuelo').innerText = ruta + " | " + precio;
             document.getElementById('modalReserva').style.display = 'flex';
-        });
-    });
-</script>
+        }
 
-    </section>
+        // Función para cerrar la ventana
+        function cerrarPago() {
+            document.getElementById('modalReserva').style.display = 'none';
+        }
+
+        // Función al pagar
+        function confirmarPago() {
+            alert("✅ ¡Pago Exitoso! Tus boletos para el Mundial han sido reservados.");
+            cerrarPago();
+        }
+    </script>
 
 </body>
 </html>
