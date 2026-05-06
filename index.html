@@ -77,7 +77,37 @@
         <div class="banner">
             <h3>PROMO GRUPAL: 25% OFF</h3>
             <p>Optimización de carga para vuelos de alta demanda.</p>
-        </div>
+        </div><!-- Formulario de Reserva (Oculto por defecto) -->
+<div id="modalReserva" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:2000; justify-content:center; align-items:center;">
+    <div style="background:white; padding:30px; border-radius:15px; max-width:400px; width:90%; color:black;">
+        <h2 style="margin-top:0;">Finalizar Reserva ✈️</h2>
+        <p id="detallesVuelo" style="font-weight:bold; color:var(--mx);"></p>
+        <form onsubmit="alert('¡Reserva Confirmada! Se ha enviado un código de pago a tu correo.'); return false;">
+            <input type="text" placeholder="Nombre completo" required style="width:100%; padding:10px; margin-bottom:10px; border:1px solid #ccc; border-radius:5px;">
+            <input type="email" placeholder="Correo electrónico" required style="width:100%; padding:10px; margin-bottom:10px; border:1px solid #ccc; border-radius:5px;">
+            <div style="background:#f9f9f9; padding:10px; border-radius:5px; margin-bottom:15px;">
+                <label>Método de Pago:</label><br>
+                <input type="radio" name="pago" checked> Tarjeta de Crédito <br>
+                <input type="radio" name="pago"> PayPal
+            </div>
+            <button type="submit" style="background:black; color:white; border:none; width:100%; padding:15px; font-weight:bold; border-radius:5px; cursor:pointer;">PAGAR AHORA</button>
+            <button type="button" onclick="document.getElementById('modalReserva').style.display='none'" style="background:none; border:none; color:red; width:100%; margin-top:10px; cursor:pointer;">Cancelar</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Lógica para que los botones funcionen
+    document.querySelectorAll('.btn').forEach(boton => {
+        boton.addEventListener('click', function() {
+            const destino = this.parentElement.querySelector('h3').innerText;
+            const precio = this.parentElement.querySelector('.price').innerText;
+            document.getElementById('detallesVuelo').innerText = `Vuelo: ${destino} - Costo: ${precio}`;
+            document.getElementById('modalReserva').style.display = 'flex';
+        });
+    });
+</script>
+
     </section>
 
 </body>
