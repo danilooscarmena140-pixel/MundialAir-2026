@@ -3,208 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MundialAir 2026 | Luxury Flight Experience</title>
+    <title>MundialAir 2026</title>
     <link href="https://googleapis.com" rel="stylesheet">
     <style>
-        :root {
-            --mex: #006847; --usa: #002868; --can: #FF0000;
-            --gold: #FFD700; --white: #ffffff; --dark: #0a0a0a;
-        }
-
+        :root { --gold: #FFD700; --white: #ffffff; --dark: #000; }
         * { box-sizing: border-box; }
-        body { 
-            margin: 0; font-family: 'Montserrat', sans-serif; 
-            background: #000; color: var(--white); overflow-x: hidden;
-        }
-
-        /* --- FONDO ANIMADO --- */
-        .bg-gradient {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(45deg, #000, #1a1a1a, #002868, #000);
-            background-size: 400% 400%; animation: gradientBG 15s ease infinite;
-            z-index: -1;
-        }
-        @keyframes gradientBG { 0% {background-position: 0% 50%;} 50% {background-position: 100% 50%;} 100% {background-position: 0% 50%;} }
+        body { margin: 0; font-family: 'Montserrat', sans-serif; background: #000; color: #fff; overflow-x: hidden; }
 
         /* --- NAVEGACIÓN --- */
         nav {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 15px 5%; background: rgba(0,0,0,0.9);
-            backdrop-filter: blur(10px); border-bottom: 2px solid var(--gold);
+            padding: 15px 5%; background: #000; border-bottom: 2px solid var(--gold);
             position: sticky; top: 0; z-index: 1000;
         }
-        .logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 2px; }
+        .logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; }
         .logo span { color: var(--gold); }
 
-        /* --- HERO SECTION CORREGIDO --- */
+        /* --- HERO CORREGIDO Y CENTRADO --- */
         .hero {
-            height: 50vh; display: flex; align-items: center; justify-content: center;
-            text-align: center; background: url('https://unsplash.com') center/cover;
-            position: relative;
-        }
-        .hero-overlay {
-            position: absolute; inset: 0; background: rgba(0,0,0,0.7);
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            padding: 20px;
-        }
-        .hero h1 { 
-            font-family: 'Bebas Neue', sans-serif; 
-            font-size: clamp(2.5rem, 8vw, 4.5rem); /* Tamaño fluido que no se rompe */
-            margin: 0; 
-            line-height: 1;
-            letter-spacing: 2px;
-        }
-        .hero p { 
-            font-weight: 400; 
-            letter-spacing: 3px; 
-            color: var(--gold); 
-            font-size: clamp(0.8rem, 2vw, 1.2rem);
-            margin-bottom: 10px;
+            height: 45vh; 
+            width: 100%;
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://unsplash.com') center/cover;
+            text-align: center;
+            padding: 0 10px;
         }
 
-        /* --- GRID DE VUELOS --- */
+        .hero-content { width: 100%; max-width: 900px; }
+
+        .hero h1 { 
+            font-family: 'Bebas Neue', sans-serif; 
+            /* Tamaño de fuente corregido para que no se desborde */
+            font-size: clamp(2.2rem, 10vw, 5rem); 
+            margin: 0 auto;
+            line-height: 1.1;
+            letter-spacing: 1px;
+            display: block;
+            width: 100%;
+        }
+
+        .hero p { 
+            font-weight: 400; 
+            letter-spacing: 2px; 
+            color: var(--gold); 
+            font-size: 0.8rem;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        /* --- GRID VUELOS --- */
         .grid-vuelos {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px; padding: 40px 5%; max-width: 1200px; margin: auto;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px; padding: 40px 5%; max-width: 1200px; margin: auto;
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px;
-            overflow: hidden; transition: 0.4s ease;
+            background: #111; border: 1px solid #222; border-radius: 15px;
+            overflow: hidden; text-align: center; padding-bottom: 20px;
         }
-        .card:hover { transform: translateY(-10px); border-color: var(--gold); }
-
-        .card-img { width: 100%; height: 180px; object-fit: cover; }
+        .card img { width: 100%; height: 160px; object-fit: cover; opacity: 0.8; }
+        .card-body { padding: 15px; }
         
-        .card-content { padding: 20px; text-align: center; }
-        .card-content h3 { font-size: 1.4rem; margin: 10px 0; font-family: 'Bebas Neue', sans-serif; }
+        .promo-tag { background: #006847; font-size: 0.7rem; padding: 5px 10px; border-radius: 5px; font-weight: bold; margin-bottom: 10px; display: inline-block; }
+        .price { font-size: 2rem; font-weight: 900; color: var(--gold); margin: 10px 0; display: block; }
         
-        .price { font-size: 2.2rem; font-weight: 900; color: var(--gold); display: block; margin: 10px 0; }
-        
-        .promo-tag {
-            font-size: 0.75rem; font-weight: 700; padding: 6px 15px; border-radius: 50px;
-            margin-bottom: 15px; display: inline-block; text-transform: uppercase;
-        }
-        .mex-tag { background: var(--mex); } .usa-tag { background: var(--usa); } .can-tag { background: var(--can); }
-
-        .btn-reserve {
-            width: 100%; padding: 14px; border: none; border-radius: 10px;
-            background: var(--white); color: var(--dark); font-weight: 800;
-            cursor: pointer; transition: 0.3s; font-size: 0.9rem;
-        }
-        .btn-reserve:hover { background: var(--gold); }
-
-        /* --- MODAL DE PAGO --- */
-        #paymentModal {
-            display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95);
-            z-index: 2000; justify-content: center; align-items: center; padding: 20px;
-        }
-        .modal-body {
-            background: #151515; padding: 30px; border-radius: 20px;
-            max-width: 400px; width: 100%; border: 1px solid var(--gold); text-align: center;
-        }
-        .input-group {
-            width: 100%; padding: 12px; margin-bottom: 12px; background: #222;
-            border: 1px solid #333; border-radius: 8px; color: white; font-size: 0.9rem;
-        }
-        .pago-final {
-            width: 100%; padding: 15px; background: var(--gold); border: none;
-            border-radius: 8px; font-weight: 900; cursor: pointer; font-size: 1.1rem;
+        .btn {
+            background: #fff; color: #000; border: none; padding: 12px;
+            width: 90%; border-radius: 8px; font-weight: 900; cursor: pointer;
         }
 
-        footer { text-align: center; padding: 40px; color: #444; font-size: 0.75rem; border-top: 1px solid #111; }
+        /* --- MODAL PAGO --- */
+        #modal { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.9); z-index:2000; justify-content:center; align-items:center; }
+        .modal-in { background:#fff; color:#000; padding:30px; border-radius:15px; width:90%; max-width:350px; text-align:center; }
+        .input { width:100%; padding:10px; margin-bottom:10px; border:1px solid #ccc; border-radius:5px; }
     </style>
 </head>
 <body>
 
-    <div class="bg-gradient"></div>
-
     <nav>
         <div class="logo">⚽ MUNDIAL<span>AIR</span></div>
-        <div style="text-align: right; line-height: 1;">
-            <div style="font-size: 0.6rem; color: var(--gold); margin-bottom: 3px;">CIERRE OPERATIVO</div>
-            <div style="font-weight: 800; font-size: 0.9rem;">44 DÍAS RESTANTES</div>
+        <div style="text-align:right">
+            <div style="font-size:0.5rem; color:var(--gold)">CIERRE</div>
+            <div style="font-weight:900; font-size:0.8rem">44 DÍAS</div>
         </div>
     </nav>
 
     <header class="hero">
-        <div class="hero-overlay">
+        <div class="hero-content">
             <p>BIENVENIDO A BORDO</p>
             <h1>CONECTANDO <span style="color:var(--gold)">NACIONES</span></h1>
         </div>
     </header>
 
     <main class="grid-vuelos">
-        <!-- MÉXICO -->
         <div class="card">
-            <img src="https://unsplash.com" class="card-img" alt="Avión México">
-            <div class="card-content">
-                <div class="promo-tag mex-tag">🇲🇽 PROMO VICTORIA: -20%</div>
-                <h3>CDMX ➔ MONTERREY</h3>
+            <img src="https://unsplash.com" alt="Avión">
+            <div class="card-body">
+                <div class="promo-tag">🇲🇽 PROMO VICTORIA</div>
+                <h3 style="margin:5px 0; font-size:1rem;">CDMX ➔ MONTERREY</h3>
                 <span class="price">$490 USD</span>
-                <button class="btn-reserve" onclick="abrirVenta('MEXICO CITY ➔ MTY', '$490 USD')">RESERVAR AHORA</button>
+                <button class="btn" onclick="pagar('CDMX ➔ MTY', '$490')">RESERVAR</button>
             </div>
         </div>
-
-        <!-- USA -->
         <div class="card">
-            <img src="https://unsplash.com" class="card-img" alt="Avión USA">
-            <div class="card-content">
-                <div class="promo-tag usa-tag">🇺🇸 GOAL PASS: -15% POR GOL</div>
-                <h3>MIAMI ➔ ATLANTA</h3>
+            <img src="https://unsplash.com" alt="Avión">
+            <div class="card-body">
+                <div class="promo-tag" style="background:#002868">🇺🇸 GOAL PASS</div>
+                <h3 style="margin:5px 0; font-size:1rem;">MIAMI ➔ ATLANTA</h3>
                 <span class="price">$610 USD</span>
-                <button class="btn-reserve" onclick="abrirVenta('MIAMI ➔ ATLANTA', '$610 USD')">RESERVAR AHORA</button>
-            </div>
-        </div>
-
-        <!-- CANADÁ -->
-        <div class="card">
-            <img src="https://unsplash.com" class="card-img" alt="Avión Canadá">
-            <div class="card-content">
-                <div class="promo-tag can-tag">🇨🇦 SQUAD PACK: FAMILIA 4X3</div>
-                <h3>TORONTO ➔ VANCOUVER</h3>
-                <span class="price">$799 USD</span>
-                <button class="btn-reserve" onclick="abrirVenta('TORONTO ➔ VANCOUVER', '$799 USD')">RESERVAR AHORA</button>
+                <button class="btn" onclick="pagar('MIAMI ➔ ATL', '$610')">RESERVAR</button>
             </div>
         </div>
     </main>
 
-    <div id="paymentModal">
-        <div class="modal-body">
-            <h2 style="font-family:'Bebas Neue'; font-size: 2.2rem; color: var(--gold); margin-bottom: 5px;">PASARELA DE PAGO</h2>
-            <p id="vueloInfo" style="margin-bottom: 25px; font-weight: 300; font-size: 0.9rem;"></p>
-            
-            <form onsubmit="procesar(); return false;">
-                <input type="text" class="input-group" placeholder="Nombre en la Tarjeta" required>
-                <input type="text" class="input-group" placeholder="Número de Tarjeta" required>
-                <div style="display: flex; gap: 10px;">
-                    <input type="text" class="input-group" placeholder="MM/YY" required>
-                    <input type="text" class="input-group" placeholder="CVV" required>
-                </div>
-                <button type="submit" class="pago-final">PAGAR AHORA</button>
-                <button type="button" onclick="cerrar()" style="background:none; border:none; color: #666; margin-top: 15px; cursor: pointer; font-size: 0.8rem;">Cancelar reserva</button>
-            </form>
+    <div id="modal">
+        <div class="modal-in">
+            <h2 style="margin-top:0">Pago Seguro ✈️</h2>
+            <p id="vInfo"></p>
+            <input type="text" class="input" placeholder="Nombre completo">
+            <input type="text" class="input" placeholder="Número de tarjeta">
+            <button onclick="cerrar()" style="background:var(--gold); border:none; padding:12px; width:100%; font-weight:900; border-radius:5px; cursor:pointer;">PAGAR AHORA</button>
+            <button onclick="cerrar()" style="background:none; border:none; color:red; margin-top:10px; cursor:pointer;">Cerrar</button>
         </div>
     </div>
 
-    <footer>
-        <p>MUNDIALAIR 2026 | OPERACIÓN LIMITADA DE 60 DÍAS | PROYECTO DE LOGÍSTICA DEPORTIVA</p>
-    </footer>
-
     <script>
-        function abrirVenta(ruta, costo) {
-            document.getElementById('vueloInfo').innerText = ruta + " | " + costo;
-            document.getElementById('paymentModal').style.display = 'flex';
+        function pagar(r, p) {
+            document.getElementById('vInfo').innerText = r + " | " + p;
+            document.getElementById('modal').style.display = 'flex';
         }
         function cerrar() {
-            document.getElementById('paymentModal').style.display = 'none';
-        }
-        function procesar() {
-            alert("✈️ ¡Reserva Exitosa!\nSu pago ha sido procesado.\nRecibirá sus boletos electrónicos a la brevedad.");
-            cerrar();
+            document.getElementById('modal').style.display = 'none';
         }
     </script>
-
 </body>
 </html>
