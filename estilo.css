@@ -1,128 +1,138 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+:root {
+    --mex-green: #006847;
+    --usa-blue: #002868;
+    --can-red: #FF0000;
+    --grass-green: #2e7d32;
+    --gold: #d4af37;
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f5f7fa;
-  color: #333;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    background: #1a1a1a; /* Fondo oscuro para que resalten los colores */
+    color: white;
 }
 
 header {
-  background: linear-gradient(135deg, #0d1b3a 0%, #1e4d8f 100%);
-  color: white;
-  text-align: center;
-  padding: 60px 20px;
+    background: linear-gradient(var(--mex-green), var(--usa-blue), var(--can-red));
+    padding: 30px;
+    text-align: center;
+    border-bottom: 4px solid var(--gold);
 }
 
-header h1 {
-  font-size: 42px;
-  margin-bottom: 10px;
+.promo-bar {
+    background: var(--gold);
+    color: black;
+    font-weight: bold;
+    padding: 10px 0;
 }
 
-header p {
-  font-size: 18px;
-  opacity: 0.9;
+main {
+    padding: 40px 20px;
+    /* Degradado sutil de los 3 países en el fondo del cuerpo */
+    background: linear-gradient(135deg, 
+        rgba(0, 104, 71, 0.2) 0%, 
+        rgba(0, 40, 104, 0.2) 50%, 
+        rgba(255, 0, 0, 0.2) 100%);
 }
 
-.rutas, .promos, .tabla-precios {
-  max-width: 1200px;
-  margin: 40px auto;
-  padding: 0 20px;
+.strategy-note {
+    max-width: 800px;
+    margin: 0 auto 30px;
+    background: rgba(255,255,255,0.1);
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px dashed var(--gold);
 }
 
-.rutas h2, .promos h2, .tabla-precios h2 {
-  text-align: center;
-  color: #0d1b3a;
-  margin-bottom: 30px;
-  font-size: 32px;
+.cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
 }
 
-.grid-rutas, .grid-promos {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 25px;
+.card {
+    background: white;
+    color: #333;
+    width: 320px;
+    padding: 25px;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s;
 }
 
-.card-ruta, .card-promo {
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: transform 0.3s;
+.card:hover { transform: scale(1.05); }
+
+.badge {
+    position: absolute;
+    top: 10px;
+    right: -30px;
+    background: var(--gold);
+    padding: 5px 40px;
+    transform: rotate(45deg);
+    font-size: 0.7rem;
+    font-weight: bold;
 }
 
-.card-ruta:hover, .card-promo:hover {
-  transform: translateY(-5px);
+.base-price {
+    font-size: 1.2rem;
+    text-decoration: line-through;
+    color: #888;
+    margin-bottom: 0;
 }
 
-.card-ruta img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
+.dynamic-price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--can-red);
+    margin-top: 5px;
 }
 
-.card-ruta-content {
-  padding: 20px;
+.promo-box {
+    background: #e8f5e9;
+    color: var(--grass-green);
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    margin: 15px 0;
+    border: 2px solid var(--grass-green);
 }
 
-.card-ruta h3 {
-  color: #1e4d8f;
-  margin-bottom: 10px;
-  font-size: 20px;
+button {
+    background: #222;
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-.precio {
-  color: #e63946;
-  font-size: 24px;
-  font-weight: bold;
-  margin-top: 15px;
+/* Reglas al final */
+.rules {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
 }
 
-.card-promo {
-  padding: 25px;
-  text-align: center;
-  border-top: 4px solid #1e4d8f;
+.rule-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
 }
 
-.card-promo h3 {
-  color: #0d1b3a;
-  margin-bottom: 15px;
-  font-size: 22px;
+.rule-item {
+    background: rgba(255,255,255,0.05);
+    padding: 15px;
+    border-left: 4px solid var(--gold);
 }
 
-table {
-  width: 100%;
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  border-collapse: collapse;
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #000;
 }
-
-table thead {
-  background: #0d1b3a;
-  color: white;
-}
-
-table th, table td {
-  padding: 15px;
-  text-align: left;
-  border-bottom: 1px solid #eee;
-}
-
-table tbody tr:hover {
-  background: #f5f7fa;
-}
-
-@media (max-width: 768px) {
-  header h1 {
-    font-size: 32px;
-  }
-  .grid-rutas, .grid-promos {
-    grid-template-columns: 1fr;
-  }
-}
-body   {  bakground:  red;   }
