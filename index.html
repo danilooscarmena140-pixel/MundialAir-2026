@@ -1,248 +1,59 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MundialAir 2026 - Vuela al Mundial</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
 
-body {
-    background-color: #f8fafc;
-    color: #1e293b;
-    line-height: 1.6;
-}
+  <!-- BANNER PRINCIPAL -->
+  <header>
+    <h1>MUNDIALAIR 2026</h1>
+    <p>Tu aerolínea oficial para llegar al Mundial 2026</p>
+  </header>
 
-/* BANNER CON IMAGEN DE FONDO */
-.banner {
-    background: linear-gradient(rgba(30, 58, 138, 0.8), rgba(30, 58, 138, 0.9)), 
-                url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1600') center/cover;
-    color: white;
-    text-align: center;
-    padding: 80px 20px;
-}
+  <!-- SECCIÓN DE RUTAS -->
+  <section class="rutas">
+    <h2>Nuestros Destinos</h2>
+    <div class="grid-rutas">
+      
+      <div class="card-ruta">
+        <img src="https://images.unsplash.com/photo-1436491863322-54a1a4e4a7ab?w=600" alt="París">
+        <div class="card-ruta-content">
+          <h3>Buenos Aires → París</h3>
+          <p>Vuelos directos para el partido de apertura</p>
+          <div class="precio">$1.250 USD</div>
+        </div>
+      </div>
 
-.banner h1 {
-    font-size: 48px;
-    margin-bottom: 15px;
-    font-weight: 700;
-}
+      <div class="card-ruta">
+        <img src="https://images.unsplash.com/photo-1543348758-0811b067fe4e?w=600" alt="Madrid">
+        <div class="card-ruta-content">
+          <h3>Buenos Aires → Madrid</h3>
+          <p>Conectá con Europa y seguí a tu selección</p>
+          <div class="precio">$980 USD</div>
+        </div>
+      </div>
 
-.slogan {
-    font-size: 20px;
-    margin-bottom: 30px;
-    font-style: italic;
-}
+      <div class="card-ruta">
+        <img src="https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?w=600" alt="Roma">
+        <div class="card-ruta-content">
+          <h3>Buenos Aires → Roma</h3>
+          <p>Paquetes especiales para hinchas</p>
+          <div class="precio">$1.100 USD</div>
+        </div>
+      </div>
 
-.boton-reservar {
-    background-color: #facc15;
-    color: #1e293b;
-    padding: 15px 40px;
-    text-decoration: none;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 18px;
-    display: inline-block;
-    transition: 0.3s;
-}
+    </div>
+  </section>
 
-.boton-reservar:hover {
-    background-color: #eab308;
-    transform: scale(1.05);
-}
-
-/* MENÚ */
-.menu {
-    background-color: #1e3a8a;
-    text-align: center;
-    padding: 15px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
-.menu a {
-    color: white;
-    text-decoration: none;
-    margin: 0 20px;
-    font-weight: 600;
-}
-
-.menu a:hover {
-    color: #facc15;
-}
-
-/* SECCIONES */
-section {
-    padding: 60px 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-section h2 {
-    color: #1e3a8a;
-    font-size: 32px;
-    margin-bottom: 30px;
-    text-align: center;
-    border-bottom: 4px solid #facc15;
-    padding-bottom: 15px;
-    display: inline-block;
-}
-
-/* CARDS DE RUTAS CON IMÁGENES */
-.cards-rutas {
-    display: flex;
-    gap: 25px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.card-ruta {
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-    width: 300px;
-    transition: 0.3s;
-}
-
-.card-ruta:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 12px 24px rgba(0,0,0,0.15);
-}
-
-.card-ruta img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-}
-
-.card-ruta h3, .card-ruta p {
-    padding: 15px 20px 0 20px;
-}
-
-.card-ruta p:last-child {
-    padding-bottom: 20px;
-    color: #64748b;
-}
-
-/* CARDS DE PROMOS */
-.cards-promos {
-    display: flex;
-    gap: 25px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.card-promo {
-    background: white;
-    padding: 30px;
-    border-radius: 12px;
-    width: 320px;
-    position: relative;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-}
-
-.etiqueta {
-    position: absolute;
-    top: -12px;
-    right: 20px;
-    background: #dc2626;
-    color: white;
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-weight: 600;
-    font-size: 14px;
-}
-
-.promo-azul { border-top: 5px solid #2563eb; }
-.promo-rojo { border-top: 5px solid #dc2626; }
-.promo-amarillo { border-top: 5px solid #facc15; }
-
-.card-promo h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.valido {
-    color: #64748b;
-    font-size: 14px;
-    margin-top: 10px;
-}
-
-/* TABLA DE PRECIOS */
-.tabla-precios {
-    width: 100%;
-    border-collapse: collapse;
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-}
-
-.tabla-precios th {
-    background-color: #1e3a8a;
-    color: white;
-    padding: 15px;
-    text-align: left;
-}
-
-.tabla-precios td {
-    padding: 15px;
-    border-bottom: 1px solid #e2e8f0;
-}
-
-.precio-oferta {
-    color: #dc2626;
-    font-weight: 700;
-    font-size: 20px;
-}
-
-.nota-precio {
-    text-align: center;
-    margin-top: 15px;
-    color: #64748b;
-    font-size: 14px;
-}
-
-/* CAJA FINANZAS */
-.finanzas-box {
-    background: linear-gradient(135deg, #10b981, #059669);
-    color: white;
-    padding: 40px;
-    border-radius: 12px;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 30px;
-}
-
-.dato-financiero {
-    text-align: center;
-}
-
-.dato-financiero span {
-    display: block;
-    font-size: 16px;
-    opacity: 0.9;
-    margin-bottom: 5px;
-}
-
-.dato-financiero strong {
-    font-size: 36px;
-    display: block;
-}
-
-/* FOOTER */
-footer {
-    background-color: #1e293b;
-    color: white;
-    text-align: center;
-    padding: 30px 20px;
-    margin-top: 60px;
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-    .banner h1 { font-size: 32px; }
-    .cards-rutas, .cards-promos { flex-direction: column; align-items: center; }
-    .finanzas-box { flex-direction: column; }
-}
+  <!-- SECCIÓN PROMOS -->
+  <section class="promos">
+    <h2>Promociones Mundial</h2>
+    <div class="grid-promos">
+      
+      <div class="card-promo">
+        <h3>Promo Hincha</h3>
+        <p>20% OFF en equipaje extra + check-in prioritario para grupos
