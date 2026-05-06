@@ -3,117 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MundialAir 2026 | La Aerolínea del Fan</title>
-    <link rel="stylesheet" href="estilo.css">
+    <title>MundialAir 2026 | Logística del Fan</title>
+    <!-- Tipografías -->
     <link href="https://googleapis.com" rel="stylesheet">
+    <!-- Conexión al CSS -->
+    <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
 
-    <!-- Navegación Premium -->
     <nav class="navbar">
         <div class="logo">⚽ MUNDIAL<span>AIR</span>2026</div>
-        <ul class="nav-links">
-            <li><a href="#vuelos">Vuelos</a></li>
-            <li><a href="#promos">Promociones</a></li>
-            <li><a href="#estrategia">Estrategia 60 Días</a></li>
-        </ul>
-        <div class="timer-box">
-            <span class="timer-label">CIERRE DE OPERACIONES EN:</span>
-            <span class="timer-clock">44D : 12H : 30M</span>
-        </div>
+        <div class="timer-badge">PROYECTO 60 DÍAS | CIERRE EN: 44D : 12H</div>
     </nav>
 
-    <!-- Hero con Imagen de Estadio -->
     <header class="hero">
-        <div class="hero-image-container">
-            <img src="https://ibb.co" alt="Sede Mundial 2026" class="main-stadium-img">
-            <div class="hero-text">
-                <h1>EL CIELO SE PINTA DE <span class="txt-gradient">FÚTBOL</span></h1>
-                <p>Conectamos las 16 sedes de Canadá, Estados Unidos y México con la logística más rápida del mundo.</p>
-                <a href="#vuelos" class="cta-button">VER RUTAS DISPONIBLES</a>
-            </div>
+        <img src="https://unsplash.com" alt="Sede Mundial" class="hero-img">
+        <div class="hero-content">
+            <h1>EL CIELO SE PINTA DE <span class="txt-gradient">FÚTBOL</span></h1>
+            <p>Conectamos las sedes de México, USA y Canadá en tiempo récord.</p>
         </div>
     </header>
 
-    <!-- Sección de Vuelos y Precios Dinámicos -->
-    <section id="vuelos" class="flight-section">
-        <h2 class="section-title">TARIFAS DINÁMICAS POR <span class="green">DESEMPEÑO</span></h2>
-        <p class="section-desc">En MundialAir, el precio de tu boleto está ligado a la pasión. Si tu selección avanza, ¡tu precio se ajusta!</p>
+    <main class="vuelos-section">
+        <h2 class="main-title">TARIFAS <span class="green">ADMINISTRATIVAS</span> DINÁMICAS</h2>
         
-        <div class="grid-container">
-            <!-- MÉXICO -->
-            <div class="flight-card mx">
-                <div class="card-header">🇲🇽 SEDE MÉXICO</div>
+        <div class="grid-vuelos">
+            <!-- Tarjeta México -->
+            <div class="card mex">
+                <div class="card-header">SEDE MÉXICO</div>
                 <div class="card-body">
                     <h3>CDMX ➔ Monterrey</h3>
-                    <p class="flight-info">Vuelo directo | 1h 35m | Boeing 737-MAX</p>
-                    <div class="price-display">
-                        <span class="old-price">$580 USD</span>
-                        <span class="current-price">$490 USD</span>
+                    <div class="price-box">
+                        <span class="price">$490 USD</span>
                     </div>
-                    <div class="promo-badge">PROMO "EL TRI": -20% si México gana hoy</div>
-                    <button class="buy-btn">ASEGURAR ASIENTO</button>
+                    <div class="promo-box">🏆 TRI PROMO: -20% POR VICTORIA</div>
+                    <p class="detail">Boeing 737-MAX | Equipaje deportivo incluido</p>
+                    <button class="btn">RESERVAR</button>
                 </div>
             </div>
 
-            <!-- USA -->
-            <div class="flight-card us">
-                <div class="card-header">🇺🇸 SEDE USA</div>
+            <!-- Tarjeta USA -->
+            <div class="card usa">
+                <div class="card-header">SEDE USA</div>
                 <div class="card-body">
                     <h3>Miami ➔ Atlanta</h3>
-                    <p class="flight-info">Vuelo directo | 1h 55m | Airbus A321neo</p>
-                    <div class="price-display">
-                        <span class="old-price">$720 USD</span>
-                        <span class="current-price">$610 USD</span>
+                    <div class="price-box">
+                        <span class="price">$610 USD</span>
                     </div>
-                    <div class="promo-badge">USA PRIDE: -15% por cada gol anotado</div>
-                    <button class="buy-btn">ASEGURAR ASIENTO</button>
+                    <div class="promo-box">⭐ GOAL PROMO: -15% POR CADA GOL</div>
+                    <p class="detail">Vuelo Directo | Lounge FIFA Exclusive</p>
+                    <button class="btn">RESERVAR</button>
                 </div>
             </div>
 
-            <!-- CANADÁ -->
-            <div class="flight-card ca">
-                <div class="card-header">🇨🇦 SEDE CANADÁ</div>
+            <!-- Tarjeta Canadá -->
+            <div class="card can">
+                <div class="card-header">SEDE CANADÁ</div>
                 <div class="card-body">
                     <h3>Toronto ➔ Vancouver</h3>
-                    <p class="flight-info">Vuelo directo | 5h 10m | Boeing 787</p>
-                    <div class="price-display">
-                        <span class="old-price">$950 USD</span>
-                        <span class="current-price">$799 USD</span>
+                    <div class="price-box">
+                        <span class="price">$799 USD</span>
                     </div>
-                    <div class="promo-badge">MAPLE PROMO: Descuento por clima frío</div>
-                    <button class="buy-btn">ASEGURAR ASIENTO</button>
+                    <div class="promo-box">🍁 MAPLE PACK: FAMILIAR 4X3</div>
+                    <p class="detail">Servicio Premium | Catering Internacional</p>
+                    <button class="btn">RESERVAR</button>
                 </div>
             </div>
         </div>
-    </section>
+    </main>
 
-    <!-- Banner de Estrategia Administrativa -->
-    <section id="estrategia" class="strategy-banner">
-        <div class="strategy-content">
-            <h2>MODELO DE NEGOCIO: <span class="gold">POP-UP AIRLINE</span></h2>
-            <div class="strategy-grid">
-                <div class="strat-item">
-                    <h4>VIGENCIA LIMITADA</h4>
-                    <p>Operamos exclusivamente del 1 de Junio al 30 de Julio. Esto reduce costos fijos de mantenimiento a largo plazo.</p>
-                </div>
-                <div class="strat-item">
-                    <h4>YIELD MANAGEMENT</h4>
-                    <p>Precios que escalan según la demanda de las fases de eliminación (Octavos, Cuartos y Final).</p>
-                </div>
-                <div class="strat-item">
-                    <h4>PAQUETES FAMILIARES</h4>
-                    <p>Descuento del 30% en grupos de 5+. Optimizamos el "Load Factor" (llenado del avión) en cada despegue.</p>
-                </div>
-            </div>
+    <section class="estrategia">
+        <h2>PLANEAMIENTO ESTRATÉGICO 60 DÍAS</h2>
+        <p>Modelo de negocio de tiempo limitado para maximizar la rentabilidad operativa durante el evento.</p>
+        <div class="family-banner">
+            <h3>PROMOCIÓN GRUPAL: 25% OFF</h3>
+            <p>Aplica para grupos de 4+ personas. Optimización de Load Factor.</p>
         </div>
     </section>
 
-    <footer class="footer-mundial">
-        <div class="footer-content">
-            <p>MundialAir2026 | La logística oficial del fanático.</p>
-            <p class="warning">⚠️ Todos los vuelos y servicios expiran el 19 de Julio de 2026 tras la Gran Final.</p>
-        </div>
+    <footer>
+        <p>&copy; 2026 MundialAir | Aerolínea Temporal | Todas las operaciones finalizan el 19 de Julio.</p>
     </footer>
 
 </body>
