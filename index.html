@@ -1,311 +1,96 @@
-Modo IA
-Todo
-Imágenes
-Videos
-Noticias
-Maps
-Shopping
-Libros
-Vuelos
-Finanzas
-Este es un diseño conceptual para MundialAir2026. El enfoque administrativo es de "Pop-up Airline": precios elevados (Premium-Skimming) para maximizar ingresos en un ciclo de vida corto (60 días), compensando los altos costos operativos temporales.
-📄 index.html
-html
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MundialAir2026 | Vuelos Exclusivos</title>
+    <title>MundialAir 2026 | Vuelos Oficiales</title>
     <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
 
-    <header>
-        <div class="logo-container">
-            <div class="ball-icon">⚽</div>
-            <h1>MundialAir2026</h1>
-        </div>
-        <p class="slogan">Tu puente aéreo entre sedes | Operación Limitada: 60 Días</p>
-    </header>
+    <nav class="main-nav">
+        <div class="logo">⚽ MUNDIAL<span>AIR</span></div>
+        <div class="status-badge">OPERACIÓN ACTIVA: DÍA 15/60</div>
+    </nav>
 
-    <section class="hero">
-        <div class="countdown">⚠️ Faltan 45 días para el cierre de operaciones finales.</div>
+    <section class="hero-header">
+        <div class="hero-overlay">
+            <h1>VIAJA A LA SIGUIENTE SEDE</h1>
+            <p>Tarifas especiales para la fase de grupos</p>
+        </div>
     </section>
 
-    <main>
-        <h2>Rutas Estratégicas - Fase de Grupos</h2>
-        <div class="cards-container">
+    <main class="booking-section">
+        <div class="destinations-grid">
             
-            <!-- México (Verde) -->
+            <!-- MÉXICO -->
             <div class="card mexico">
-                <h3>CDMX ➔ Dallas</h3>
-                <p class="price">$850 USD</p>
-                <ul>
-                    <li>Incluye transporte de artículos de fan</li>
-                    <li>Seguro de cancelación exprés</li>
-                    <li>Disponibilidad inmediata</li>
-                </ul>
-                <button>Reservar Ahora</button>
-            </div>
-
-            <!-- USA (Azul) -->
-            <div class="card usa">
-                <h3>Miami ➔ Toronto</h3>
-                <p class="price">$1,200 USD</p>
-                <ul>
-                    <li>Vuelo directo inter-país</li>
-                    <li>Catering temático incluido</li>
-                    <li>Acceso a Lounge FIFA</li>
-                </ul>
-                <button>Reservar Ahora</button>
-            </div>
-
-            <!-- Canadá (Rojo) -->
-            <div class="card canada">
-                <h3>Vancouver ➔ Los Ángeles</h3>
-                <p class="price">$950 USD</p>
-                <ul>
-                    <li>Prioridad de desembarque</li>
-                    <li>Wifi alta velocidad para streaming</li>
-                    <li>Equipaje deportivo gratis</li>
-                </ul>
-                <button>Reservar Ahora</button>
-            </div>
-
-        </div>
-    </main>
-
-    <footer>
-        <p>&copy; 2026 MundialAir. Proyecto de tiempo limitado. Todos los vuelos expiran tras la gran final.</p>
-    </footer>
-
-</body>
-</html>
-Usa el código con precaución.
-🎨 estilo.css
-css
-:root {
-    --mex-green: #006847;
-    --usa-blue: #002868;
-    --can-red: #FF0000;
-    --grass-green: #4CAF50;
-    --white: #ffffff;
-}
-
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    background-color: #f4f4f4;
-    color: #333;
-}
-
-/* Header con estética de estadio */
-header {
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://unsplash.com');
-    background-size: cover;
-    color: white;
-    text-align: center;
-    padding: 2rem;
-    border-bottom: 5px solid var(--grass-green);
-}
-
-.logo-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-}
-
-.ball-icon {
-    font-size: 3rem;
-    filter: drop-shadow(0 0 10px white);
-}
-
-/* Cuerpo con los 3 colores del mundial */
-main {
-    padding: 2rem;
-    background: linear-gradient(to right, 
-        rgba(0, 104, 71, 0.1) 33%, 
-        rgba(0, 40, 104, 0.1) 33% 66%, 
-        rgba(255, 0, 0, 0.1) 66%);
-    min-height: 60vh;
-}
-
-h2 {
-    text-align: center;
-    text-transform: uppercase;
-}
-
-.cards-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-top: 2rem;
-}
-
-.card {
-    background: white;
-    border-radius: 15px;
-    width: 280px;
-    padding: 20px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
-    border-top: 8px solid;
-}
-
-.card:hover {
-    transform: translateY(-10px);
-}
-
-/* Colores por país */
-.mexico { border-color: var(--mex-green); }
-.usa { border-color: var(--usa-blue); }
-.canada { border-color: var(--can-red); }
-
-.price {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #222;
-    margin: 10px 0;
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-    font-size: 0.9rem;
-}
-
-li {
-    margin-bottom: 8px;
-    padding-left: 20px;
-    position: relative;
-}
-
-li::before {
-    content: '✈️';
-    position: absolute;
-    left: 0;
-}
-
-button {
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 5px;
-    background-color: var(--grass-green);
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-button:hover {
-    filter: brightness(1.1);
-}
-
-.countdown {
-    background: #ffcc00;
-    color: black;
-    text-align: center;
-    font-weight: bold;
-    padding: 10px;
-}
-
-footer {
-    text-align: center;
-    padding: 1rem;
-    background: #222;
-    color: white;
-    font-size: 0.8rem;
-}
-Usa el código con precaución.
-📈 Estrategia Administrativa Aplicada:
-Precios de Descreme (Skimming): Al ser un servicio de solo 60 días, los precios son entre un 30% y 50% más altos que una aerolínea comercial estándar. Se cobra por la conveniencia y urgencia.
-Costos Fijos Flexibles: El diseño sugiere que el valor está en la rapidez de los vuelos inter-sedes, ideal para fans que viajan según el resultado de su equipo.
-Escasez Programada: El aviso de "Operación Limitada" en el header presiona al usuario a comprar antes de que la aerolínea "desaparezca".
-¿Te gustaría que ajuste los precios basándome en una clase económica o ejecutiva, o prefieres que agregue una sección de "Paquetes por Fase de Eliminación"?
-Las respuestas de la IA pueden incluir errores.
-
-
-
-
-
-Entendido. Desde una perspectiva administrativa y de marketing deportivo, esto se llama Dynamic Pricing (Precios Dinámicos) basado en el éxito del cliente. Es una jugada arriesgada pero brillante para una aerolínea de 60 días: generas lealtad inmediata y maximizas el "hype".
-Aquí tienes la actualización del código con el sistema de tarifas variables y las promociones de grupo.
-📄 index.html (Actualizado)
-html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MundialAir2026 | Tarifas Dinámicas</title>
-    <link rel="stylesheet" href="estilo.css">
-</head>
-<body>
-
-    <header>
-        <div class="logo-container">
-            <div class="ball-icon">⚽</div>
-            <h1>MundialAir2026</h1>
-        </div>
-        <p class="slogan">Vuela con la pasión de tu equipo | Operación Relámpago (60 Días)</p>
-    </header>
-
-    <section class="promo-bar">
-        <marquee>🔥 PROMO FAMILIAR: 20% OFF en grupos de 4+ personas --- 🏆 TARIFA "VICTORIA": Si tu equipo gana, tu siguiente vuelo sube de nivel --- ⚠️ QUEDAN 45 DÍAS DE OPERACIÓN</marquee>
-    </section>
-
-    <main>
-        <div class="strategy-note">
-            <p><strong>Nota Administrativa:</strong> Precios sujetos a rendimiento deportivo. ¡Asegura tu lugar antes de que el marcador suba el costo!</p>
-        </div>
-
-        <div class="cards-container">
-            <!-- México -->
-            <div class="card mexico">
-                <div class="badge">Sede México</div>
-                <h3>Ciudad de México ➔ Monterrey</h3>
-                <p class="base-price">Base: $450 USD</p>
-                <p class="dynamic-price">Tarifa Victoria: +$150 USD p/partido</p>
-                <div class="promo-box">👨‍👩‍👧‍👦 Plan Familia: $1,400 (4 pax)</div>
-                <button>Comprar con Seguro de Victoria</button>
+                <div class="img-wrapper">
+                    <img src="https://unsplash.com" alt="Ciudad de México">
+                    <div class="tag">SEDE MÉXICO</div>
+                </div>
+                <div class="content">
+                    <h3>CDMX ➔ GUADALAJARA</h3>
+                    <div class="promo-tag">WIN PROMO: -15% SI GANA EL TRI</div>
+                    <div class="price-box">
+                        <span class="label">DESDE</span>
+                        <span class="value">$299 USD</span>
+                    </div>
+                    <button class="btn">RESERVAR</button>
+                </div>
             </div>
 
             <!-- USA -->
             <div class="card usa">
-                <div class="badge">Sede USA</div>
-                <h3>Los Ángeles ➔ New York</h3>
-                <p class="base-price">Base: $750 USD</p>
-                <p class="dynamic-price">Tarifa Victoria: +$200 USD p/partido</p>
-                <div class="promo-box">👨‍👩‍👧‍👦 Plan Familia: $2,500 (4 pax)</div>
-                <button>Comprar con Seguro de Victoria</button>
+                <div class="img-wrapper">
+                    <img src="https://unsplash.com" alt="Miami">
+                    <div class="tag">SEDE USA</div>
+                </div>
+                <div class="content">
+                    <h3>MIAMI ➔ NEW YORK</h3>
+                    <div class="promo-tag">WIN PROMO: -15% SI GANA USA</div>
+                    <div class="price-box">
+                        <span class="label">DESDE</span>
+                        <span class="value">$450 USD</span>
+                    </div>
+                    <button class="btn">RESERVAR</button>
+                </div>
             </div>
 
-            <!-- Canadá -->
+            <!-- CANADÁ -->
             <div class="card canada">
-                <div class="badge">Sede Canadá</div>
-                <h3>Toronto ➔ Vancouver</h3>
-                <p class="base-price">Base: $600 USD</p>
-                <p class="dynamic-price">Tarifa Victoria: +$100 USD p/partido</p>
-                <div class="promo-box">👨‍👩‍👧‍👦 Plan Familia: $1,900 (4 pax)</div>
-                <button>Comprar con Seguro de Victoria</button>
+                <div class="img-wrapper">
+                    <img src="https://unsplash.com" alt="Toronto">
+                    <div class="tag">SEDE CANADÁ</div>
+                </div>
+                <div class="content">
+                    <h3>TORONTO ➔ VANCOUVER</h3>
+                    <div class="promo-tag">WIN PROMO: -15% SI GANA CANADÁ</div>
+                    <div class="price-box">
+                        <span class="label">DESDE</span>
+                        <span class="value">$380 USD</span>
+                    </div>
+                    <button class="btn">RESERVAR</button>
+                </div>
             </div>
+
         </div>
     </main>
 
-    <section class="rules">
-        <h3>Reglas de la Aerolínea (Estrategia 60 Días)</h3>
-        <div class="rule-grid">
-            <div class="rule-item"><strong>Escalabilidad:</strong> El precio sube un 15% automático tras cada victoria de la selección local por alta demanda de última hora.</div>
-            <div class="rule-item"><strong>Liquidación:</strong> Al día 61, MundialAir deja de existir. No hay reembolsos post-final.</div>
-            <div class="rule-item"><strong>Descuento Familiar:</strong> Aplicable solo en compras de 4 a 6 asientos para optimizar el llenado de cabina rápida.</div>
+    <section class="family-offer">
+        <div class="offer-container">
+            <div class="offer-text">
+                <h2>OFERTA SQUAD: 4+ PASAJEROS</h2>
+                <p>Viaja con todo tu grupo y obtén un <strong>25% de descuento</strong> automático.</p>
+            </div>
+            <div class="offer-action">
+                <a href="#" class="btn-alt">APLICAR DESCUENTO</a>
+            </div>
         </div>
     </section>
 
-    <footer>
-        <p>MundialAir2026 es una marca temporal. El fútbol vuela, nosotros también.</p>
+    <footer class="minimal-footer">
+        <p>MundialAir2026 &copy; | Todos los derechos reservados | Servicio vigente hasta el 19 de Julio de 2026</p>
     </footer>
 
 </body>
