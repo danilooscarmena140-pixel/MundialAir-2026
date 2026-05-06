@@ -1,67 +1,61 @@
-/* ESTILOS MUNDIALAIR 2026 - AEROLÍNEA CONCEPTUAL */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Arial', sans-serif;
 }
 
 body {
-  background-color: #f4f7fa;
-  color: #1a2a44;
-  line-height: 1.6;
+  font-family: Arial, sans-serif;
+  background-color: #f5f7fa;
+  color: #333;
 }
 
-/* BANNER PRINCIPAL */
 header {
-  background: linear-gradient(135deg, #003366 0%, #0066cc 100%);
+  background: linear-gradient(135deg, #0d1b3a 0%, #1e4d8f 100%);
   color: white;
-  padding: 40px 20px;
   text-align: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  padding: 60px 20px;
 }
 
 header h1 {
-  font-size: 2.5em;
+  font-size: 42px;
   margin-bottom: 10px;
-  letter-spacing: 2px;
 }
 
 header p {
-  font-size: 1.2em;
+  font-size: 18px;
   opacity: 0.9;
 }
 
-/* SECCIÓN DE RUTAS */
-.rutas {
-  padding: 50px 20px;
+.rutas, .promos, .tabla-precios {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 40px auto;
+  padding: 0 20px;
 }
 
-.rutas h2 {
+.rutas h2, .promos h2, .tabla-precios h2 {
   text-align: center;
-  font-size: 2em;
-  margin-bottom: 40px;
-  color: #003366;
+  color: #0d1b3a;
+  margin-bottom: 30px;
+  font-size: 32px;
 }
 
-.grid-rutas {
+.grid-rutas, .grid-promos {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
+  gap: 25px;
 }
 
-.card-ruta {
+.card-ruta, .card-promo {
   background: white;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   transition: transform 0.3s;
 }
 
-.card-ruta:hover {
-  transform: translateY(-8px);
+.card-ruta:hover, .card-promo:hover {
+  transform: translateY(-5px);
 }
 
 .card-ruta img {
@@ -75,105 +69,59 @@ header p {
 }
 
 .card-ruta h3 {
-  color: #0066cc;
+  color: #1e4d8f;
   margin-bottom: 10px;
+  font-size: 20px;
 }
 
 .precio {
-  font-size: 1.5em;
-  font-weight: bold;
   color: #e63946;
+  font-size: 24px;
+  font-weight: bold;
   margin-top: 15px;
 }
 
-/* SECCIÓN PROMOS */
-.promos {
-  background-color: #e6f2ff;
-  padding: 50px 20px;
-}
-
-.promos h2 {
-  text-align: center;
-  font-size: 2em;
-  margin-bottom: 40px;
-  color: #003366;
-}
-
-.grid-promos {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
 .card-promo {
-  background: white;
-  border-left: 5px solid #e63946;
   padding: 25px;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  text-align: center;
+  border-top: 4px solid #1e4d8f;
 }
 
 .card-promo h3 {
-  color: #e63946;
-  margin-bottom: 12px;
-}
-
-/* TABLA DE PRECIOS */
-.tabla-precios {
-  padding: 50px 20px;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.tabla-precios h2 {
-  text-align: center;
-  font-size: 2em;
-  margin-bottom: 30px;
-  color: #003366;
+  color: #0d1b3a;
+  margin-bottom: 15px;
+  font-size: 22px;
 }
 
 table {
   width: 100%;
-  border-collapse: collapse;
   background: white;
-  border-radius: 10px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-collapse: collapse;
 }
 
-th {
-  background: #003366;
+table thead {
+  background: #0d1b3a;
   color: white;
+}
+
+table th, table td {
   padding: 15px;
   text-align: left;
+  border-bottom: 1px solid #eee;
 }
 
-td {
-  padding: 15px;
-  border-bottom: 1px solid #e0e0e0;
+table tbody tr:hover {
+  background: #f5f7fa;
 }
 
-tr:hover {
-  background-color: #f8f9fa;
-}
-
-/* FOOTER */
-footer {
-  background: #1a2a44;
-  color: white;
-  text-align: center;
-  padding: 25px;
-  margin-top: 50px;
-}
-
-/* RESPONSIVE PARA CELULAR */
 @media (max-width: 768px) {
   header h1 {
-    font-size: 1.8em;
+    font-size: 32px;
   }
-  .rutas h2, .promos h2, .tabla-precios h2 {
-    font-size: 1.5em;
+  .grid-rutas, .grid-promos {
+    grid-template-columns: 1fr;
   }
 }
