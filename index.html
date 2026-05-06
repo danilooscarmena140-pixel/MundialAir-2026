@@ -3,87 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MundialAir 2026 | Logística del Fan</title>
-    <!-- Tipografías -->
-    <link href="https://googleapis.com" rel="stylesheet">
-    <!-- Conexión al CSS -->
-    <link rel="stylesheet" href="estilo.css">
+    <title>MundialAir 2026 | Oficial</title>
+    <style>
+        /* TODO EL DISEÑO ESTÁ AQUÍ DENTRO */
+        :root { --mx: #006847; --us: #002868; --ca: #FF0000; --gold: #FFD700; --dark: #111; }
+        body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #f0f0f0; color: var(--dark); }
+        
+        .navbar { background: #000; color: white; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 4px solid var(--gold); }
+        .logo { font-weight: 900; font-size: 1.5rem; }
+        .logo span { color: var(--gold); }
+        .badge { background: var(--gold); color: #000; padding: 5px 10px; border-radius: 5px; font-weight: bold; font-size: 0.8rem; }
+
+        .hero { height: 50vh; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://unsplash.com'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; color: white; text-align: center; }
+        .hero h1 { font-size: 3rem; margin: 0; }
+        .txt-gradient { background: linear-gradient(to right, var(--mx), var(--gold), var(--ca)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 900; }
+
+        .vuelos { padding: 40px 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-bottom: 8px solid; text-align: center; padding-bottom: 20px; }
+        .mex { border-color: var(--mx); } .usa { border-color: var(--us); } .can { border-color: var(--ca); }
+        .card-header { padding: 10px; color: white; font-weight: bold; }
+        .mex .card-header { background: var(--mx); } .usa .card-header { background: var(--us); } .can .card-header { background: var(--ca); }
+        
+        .price { font-size: 2rem; font-weight: 900; margin: 15px 0; display: block; }
+        .promo { background: #e8f5e9; color: #2e7d32; padding: 8px; margin: 10px; border-radius: 5px; font-size: 0.8rem; font-weight: bold; }
+        .btn { background: #000; color: white; border: none; padding: 12px 25px; border-radius: 5px; font-weight: bold; cursor: pointer; width: 80%; }
+        
+        .estrategia { background: #111; color: white; padding: 50px 5%; text-align: center; }
+        .banner { background: linear-gradient(to right, var(--mx), var(--us)); padding: 20px; border-radius: 10px; margin-top: 20px; }
+    </style>
 </head>
 <body>
 
     <nav class="navbar">
         <div class="logo">⚽ MUNDIAL<span>AIR</span>2026</div>
-        <div class="timer-badge">PROYECTO 60 DÍAS | CIERRE EN: 44D : 12H</div>
+        <div class="badge">CIERRE: 44 DÍAS</div>
     </nav>
 
     <header class="hero">
-        <img src="https://unsplash.com" alt="Sede Mundial" class="hero-img">
-        <div class="hero-content">
+        <div>
             <h1>EL CIELO SE PINTA DE <span class="txt-gradient">FÚTBOL</span></h1>
-            <p>Conectamos las sedes de México, USA y Canadá en tiempo récord.</p>
+            <p>Aerolínea Oficial del Mundial 2026</p>
         </div>
     </header>
 
-    <main class="vuelos-section">
-        <h2 class="main-title">TARIFAS <span class="green">ADMINISTRATIVAS</span> DINÁMICAS</h2>
-        
-        <div class="grid-vuelos">
-            <!-- Tarjeta México -->
-            <div class="card mex">
-                <div class="card-header">SEDE MÉXICO</div>
-                <div class="card-body">
-                    <h3>CDMX ➔ Monterrey</h3>
-                    <div class="price-box">
-                        <span class="price">$490 USD</span>
-                    </div>
-                    <div class="promo-box">🏆 TRI PROMO: -20% POR VICTORIA</div>
-                    <p class="detail">Boeing 737-MAX | Equipaje deportivo incluido</p>
-                    <button class="btn">RESERVAR</button>
-                </div>
-            </div>
+    <main class="vuelos">
+        <div class="card mex">
+            <div class="card-header">SEDE MÉXICO</div>
+            <h3>CDMX ➔ MTY</h3>
+            <span class="price">$490 USD</span>
+            <div class="promo">🏆 TRI PROMO: -20% POR VICTORIA</div>
+            <button class="btn">RESERVAR</button>
+        </div>
 
-            <!-- Tarjeta USA -->
-            <div class="card usa">
-                <div class="card-header">SEDE USA</div>
-                <div class="card-body">
-                    <h3>Miami ➔ Atlanta</h3>
-                    <div class="price-box">
-                        <span class="price">$610 USD</span>
-                    </div>
-                    <div class="promo-box">⭐ GOAL PROMO: -15% POR CADA GOL</div>
-                    <p class="detail">Vuelo Directo | Lounge FIFA Exclusive</p>
-                    <button class="btn">RESERVAR</button>
-                </div>
-            </div>
+        <div class="card usa">
+            <div class="card-header">SEDE USA</div>
+            <h3>MIAMI ➔ ATLANTA</h3>
+            <span class="price">$610 USD</span>
+            <div class="promo">⭐ GOAL PROMO: -15% POR GOL</div>
+            <button class="btn">RESERVAR</button>
+        </div>
 
-            <!-- Tarjeta Canadá -->
-            <div class="card can">
-                <div class="card-header">SEDE CANADÁ</div>
-                <div class="card-body">
-                    <h3>Toronto ➔ Vancouver</h3>
-                    <div class="price-box">
-                        <span class="price">$799 USD</span>
-                    </div>
-                    <div class="promo-box">🍁 MAPLE PACK: FAMILIAR 4X3</div>
-                    <p class="detail">Servicio Premium | Catering Internacional</p>
-                    <button class="btn">RESERVAR</button>
-                </div>
-            </div>
+        <div class="card can">
+            <div class="card-header">SEDE CANADÁ</div>
+            <h3>TORONTO ➔ VAN</h3>
+            <span class="price">$799 USD</span>
+            <div class="promo">🍁 MAPLE: FAMILIAR 4X3</div>
+            <button class="btn">RESERVAR</button>
         </div>
     </main>
 
     <section class="estrategia">
-        <h2>PLANEAMIENTO ESTRATÉGICO 60 DÍAS</h2>
-        <p>Modelo de negocio de tiempo limitado para maximizar la rentabilidad operativa durante el evento.</p>
-        <div class="family-banner">
-            <h3>PROMOCIÓN GRUPAL: 25% OFF</h3>
-            <p>Aplica para grupos de 4+ personas. Optimización de Load Factor.</p>
+        <h2>PLAN ESTRATÉGICO 60 DÍAS</h2>
+        <div class="banner">
+            <h3>PROMO GRUPAL: 25% OFF</h3>
+            <p>Optimización de carga para vuelos de alta demanda.</p>
         </div>
     </section>
-
-    <footer>
-        <p>&copy; 2026 MundialAir | Aerolínea Temporal | Todas las operaciones finalizan el 19 de Julio.</p>
-    </footer>
 
 </body>
 </html>
