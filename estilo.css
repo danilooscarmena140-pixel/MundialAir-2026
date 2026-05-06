@@ -1,134 +1,120 @@
-@import url('https://googleapis.com');
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MundialAir 2026 | La Aerolínea del Fan</title>
+    <link rel="stylesheet" href="estilo.css">
+    <link href="https://googleapis.com" rel="stylesheet">
+</head>
+<body>
 
-:root {
-    --mx: #006847;
-    --us: #002868;
-    --ca: #FF0000;
-    --accent: #FFD700;
-}
+    <!-- Navegación Premium -->
+    <nav class="navbar">
+        <div class="logo">⚽ MUNDIAL<span>AIR</span>2026</div>
+        <ul class="nav-links">
+            <li><a href="#vuelos">Vuelos</a></li>
+            <li><a href="#promos">Promociones</a></li>
+            <li><a href="#estrategia">Estrategia 60 Días</a></li>
+        </ul>
+        <div class="timer-box">
+            <span class="timer-label">CIERRE DE OPERACIONES EN:</span>
+            <span class="timer-clock">44D : 12H : 30M</span>
+        </div>
+    </nav>
 
-body {
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    background-color: #f0f0f0;
-}
+    <!-- Hero con Imagen de Estadio -->
+    <header class="hero">
+        <div class="hero-image-container">
+            <img src="https://ibb.co" alt="Sede Mundial 2026" class="main-stadium-img">
+            <div class="hero-text">
+                <h1>EL CIELO SE PINTA DE <span class="txt-gradient">FÚTBOL</span></h1>
+                <p>Conectamos las 16 sedes de Canadá, Estados Unidos y México con la logística más rápida del mundo.</p>
+                <a href="#vuelos" class="cta-button">VER RUTAS DISPONIBLES</a>
+            </div>
+        </div>
+    </header>
 
-/* Navegación */
-.main-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 5%;
-    background: #000;
-    color: #fff;
-}
+    <!-- Sección de Vuelos y Precios Dinámicos -->
+    <section id="vuelos" class="flight-section">
+        <h2 class="section-title">TARIFAS DINÁMICAS POR <span class="green">DESEMPEÑO</span></h2>
+        <p class="section-desc">En MundialAir, el precio de tu boleto está ligado a la pasión. Si tu selección avanza, ¡tu precio se ajusta!</p>
+        
+        <div class="grid-container">
+            <!-- MÉXICO -->
+            <div class="flight-card mx">
+                <div class="card-header">🇲🇽 SEDE MÉXICO</div>
+                <div class="card-body">
+                    <h3>CDMX ➔ Monterrey</h3>
+                    <p class="flight-info">Vuelo directo | 1h 35m | Boeing 737-MAX</p>
+                    <div class="price-display">
+                        <span class="old-price">$580 USD</span>
+                        <span class="current-price">$490 USD</span>
+                    </div>
+                    <div class="promo-badge">PROMO "EL TRI": -20% si México gana hoy</div>
+                    <button class="buy-btn">ASEGURAR ASIENTO</button>
+                </div>
+            </div>
 
-.logo { font-size: 1.5rem; font-weight: 800; letter-spacing: -1px; }
-.logo span { color: var(--accent); }
+            <!-- USA -->
+            <div class="flight-card us">
+                <div class="card-header">🇺🇸 SEDE USA</div>
+                <div class="card-body">
+                    <h3>Miami ➔ Atlanta</h3>
+                    <p class="flight-info">Vuelo directo | 1h 55m | Airbus A321neo</p>
+                    <div class="price-display">
+                        <span class="old-price">$720 USD</span>
+                        <span class="current-price">$610 USD</span>
+                    </div>
+                    <div class="promo-badge">USA PRIDE: -15% por cada gol anotado</div>
+                    <button class="buy-btn">ASEGURAR ASIENTO</button>
+                </div>
+            </div>
 
-.status-badge {
-    background: var(--accent);
-    color: #000;
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 800;
-}
+            <!-- CANADÁ -->
+            <div class="flight-card ca">
+                <div class="card-header">🇨🇦 SEDE CANADÁ</div>
+                <div class="card-body">
+                    <h3>Toronto ➔ Vancouver</h3>
+                    <p class="flight-info">Vuelo directo | 5h 10m | Boeing 787</p>
+                    <div class="price-display">
+                        <span class="old-price">$950 USD</span>
+                        <span class="current-price">$799 USD</span>
+                    </div>
+                    <div class="promo-badge">MAPLE PROMO: Descuento por clima frío</div>
+                    <button class="buy-btn">ASEGURAR ASIENTO</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
-/* Hero */
-.hero-header {
-    height: 50vh;
-    background: url('https://unsplash.com') center/cover;
-    position: relative;
-}
+    <!-- Banner de Estrategia Administrativa -->
+    <section id="estrategia" class="strategy-banner">
+        <div class="strategy-content">
+            <h2>MODELO DE NEGOCIO: <span class="gold">POP-UP AIRLINE</span></h2>
+            <div class="strategy-grid">
+                <div class="strat-item">
+                    <h4>VIGENCIA LIMITADA</h4>
+                    <p>Operamos exclusivamente del 1 de Junio al 30 de Julio. Esto reduce costos fijos de mantenimiento a largo plazo.</p>
+                </div>
+                <div class="strat-item">
+                    <h4>YIELD MANAGEMENT</h4>
+                    <p>Precios que escalan según la demanda de las fases de eliminación (Octavos, Cuartos y Final).</p>
+                </div>
+                <div class="strat-item">
+                    <h4>PAQUETES FAMILIARES</h4>
+                    <p>Descuento del 30% en grupos de 5+. Optimizamos el "Load Factor" (llenado del avión) en cada despegue.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-.hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.4);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-}
+    <footer class="footer-mundial">
+        <div class="footer-content">
+            <p>MundialAir2026 | La logística oficial del fanático.</p>
+            <p class="warning">⚠️ Todos los vuelos y servicios expiran el 19 de Julio de 2026 tras la Gran Final.</p>
+        </div>
+    </footer>
 
-.hero-overlay h1 { font-family: 'Oswald', sans-serif; font-size: 3.5rem; margin: 0; }
-
-/* Grid y Tarjetas */
-.booking-section { padding: 50px 5%; }
-
-.destinations-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-}
-
-.card {
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-
-.img-wrapper { position: relative; height: 200px; }
-.img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
-
-.tag {
-    position: absolute; top: 15px; left: 15px;
-    background: white; padding: 4px 12px;
-    font-weight: 800; font-size: 0.7rem; border-radius: 4px;
-}
-
-.content { padding: 20px; text-align: center; }
-
-.promo-tag {
-    color: var(--mx);
-    font-weight: 800;
-    font-size: 0.85rem;
-    margin: 10px 0;
-}
-
-.price-box { margin-bottom: 20px; }
-.price-box .label { display: block; font-size: 0.7rem; color: #666; }
-.price-box .value { font-size: 2rem; font-weight: 800; }
-
-.btn {
-    background: #000; color: white; border: none;
-    width: 100%; padding: 15px; font-weight: 800;
-    cursor: pointer; border-radius: 8px; transition: 0.3s;
-}
-
-.btn:hover { background: var(--accent); color: #000; }
-
-/* Bordes por país */
-.mexico { border-bottom: 6px solid var(--mx); }
-.usa { border-bottom: 6px solid var(--us); }
-.canada { border-bottom: 6px solid var(--ca); }
-
-/* Banner Familiar */
-.family-offer {
-    background: linear-gradient(to right, var(--mx), var(--us), var(--ca));
-    padding: 60px 5%;
-    color: white;
-    margin: 40px 0;
-}
-
-.offer-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.btn-alt {
-    background: white; color: black; text-decoration: none;
-    padding: 15px 40px; border-radius: 30px; font-weight: 800;
-}
-
-.minimal-footer { text-align: center; padding: 40px; color: #888; font-size: 0.8rem; }
-
-@media (max-width: 768px) {
-    .offer-container { flex-direction: column; text-align: center; gap: 20px; }
-}
+</body>
+</html>
